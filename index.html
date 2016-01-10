@@ -1,18 +1,85 @@
-<!doctype html>
-<title>608.js</title>
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<style>
+body{height:100%;overflow:hidden;margin-left:auto;margin-right:auto;background-color:#998F8F}
+form{box-shadow:  inset  0px 3px 3px 1px gray; background-color:white;positon:fixed; top:10%; left:30%;
+width: 47em;border: .51px inset gray;border-radius:5px;}              
+span, div { width: 9em;margin-right: 1em;line-height: 1.9em;backgrounc-color: white;} 
+div{ width:45em;margin-left:auto; margin-right:auto;border-bottom: .51px inset gray;opacity:0;}
+span{background-color:white;color:#342757;}
+input{ 
+	margin:1em;
+	width:47em;
+	height:1.5em;
+	font-size:1.1em; 
+	border-bottom: .51px inset gray;
+	background-color:white;
+}
+#output { 
+	width:47em;
+	height:23em ;
+	overflow:hidden;
+	overflow-y:scroll;
+	box-shadow:  inset  0px 3px 3px 1px gray;
+border: .51px inset gray;
+background-color: #FFF;
+opacity: 1;
+padding: 15px;
+border-radius:5px;
+}
+.fu {
+    opacity: 1;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+
+}
+</style>
+</head>
+<body> 
+<form style="margin:auto;margin-bottom:50px;">
+<input style="width:300px" id="myfile" name="files"  type="file">
+</input>
+
+</form>
+<div id="output">
+</div>
+</body>
 <script src=scc.js></script>
 <script src=608.js></script>
 <script>
-function get(url, onload, onerror) {
-    var request = new XMLHttpRequest();
-    request.open('GET', url);
-    request.onload = onload;
-    request.onerror = onerror;
-    request.send();
+
+var output=document.getElementById("output")
+var myfile=document.querySelector("#myfile")
+
+var wash= function(str){
+    var pattern=/\0|\u0004/
+    return str.replace(pattern,'')
+}   
+
+var mksrc= function(evt){
+    output.innerHTML="" 
+    var cues = parseSCC(wash(evt.target.result));
+    var fframes = parse608(cues);
+    output.scrollTop=0
+}
+   
+var pullfiles=function(evt){
+    var file = myfile.files[0]
+        var r=new FileReader()
+        r.onload=mksrc
+        r.readAsText(file)
+
 }
 
-get('captions_cpc.scc', function() {
-    var cues = parseSCC(this.response);
-    var frames = parse608(cues);
-});
+myfile.onchange=pullfiles
 </script>
+
+</html>
+
+
+
+
