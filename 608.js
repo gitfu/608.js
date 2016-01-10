@@ -422,11 +422,13 @@ function parse608(cues) {
             var row, column, charCode;
             for (row = 1; row <= ROWS; row++) {
                 for (column = 1; column <= COLUMNS; column++) {
-                    charCode = get(row, column);
+                    charCode = get(row, column); 
+            //console.log(String.fromCharCode.apply(String, [charCode]));
                     charCodes.push(charCode ? charCode : 0x20);
                 }
                 charCodes.push(0x0A);
             }
+            console.log(String.fromCharCode.apply(String, charCodes));
             return String.fromCharCode.apply(String, charCodes);
         }
 
@@ -484,12 +486,15 @@ function parse608(cues) {
                 }
             }
         }
+	var out=document.getElementById('output')
         if (cc) {
-            var pre = document.createElement('pre');
-            pre.style.width = '32em';
-            pre.style.border = '1px dotted green';
-            pre.textContent = cc.toString();
-            document.body.appendChild(pre);
+            var pre = document.createElement('div');
+	var timespan=document.createElement('span')
+	timespan.textContent=cue.stamp  
+	pre.appendChild(timespan)	
+            pre.innerHTML += cc.toString();
+            out.appendChild(pre);
+	window.setTimeout(function(){pre.className='fu';},parseInt(Math.random()*1))
         }
     });
 }
