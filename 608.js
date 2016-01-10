@@ -492,7 +492,7 @@ function parse608(cues) {
 	    pre.appendChild(timespan)	
             pre.innerHTML += cc.toString();
             out.appendChild(pre);
-	    window.setTimeout(function(){pre.className='fu';},parseInt(Math.random()*1))
+	    window.setTimeout(function(){pre.className='fu';}, parseInt(Math.random()*1))
         }
     });
 }
