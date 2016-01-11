@@ -10,6 +10,7 @@ function parseSCC(input) {
     while ((match = re.exec(input)) !== null) {
         var time = 3600 * match[1] + 60 * match[2] + 1 * match[3];
         time += match[5] / 30; // FIXME: dropframe vs. non-dropframe
+	// stamp is the timestamp to display
 	var stamp=String(match[1]+':'+match[2]+':'+match[3]+':'+match[5])
 	var bytes = [];
         match[6].split(/\s+/).forEach(function(pair) {
@@ -18,6 +19,7 @@ function parseSCC(input) {
                 bytes.push(parseInt(pair.substring(2, 4), 16));
             }
         });
+	// stamp is pushed with the other data onto cues
         cues.push({ time: time,stamp:stamp, data: new Uint8Array(bytes) });
     }
     return cues;
