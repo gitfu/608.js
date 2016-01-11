@@ -1,54 +1,49 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<style>
-body{height:100%;overflow:hidden;margin-left:auto;margin-right:auto;background-color:#998F8F}
-form{ margin:auto; margin-bottom:5%;box-shadow:  inset  0em .3em .3em .1em gray; background-color:white;width: 57%;border-radius:.3em;}              
-span, div { width: 9em;margin-right: 1em;line-height: 1.9em;backgrounc-color: white;} 
-div{ width:45em;margin-left:auto; margin-right:auto;border-bottom: .1em inset gray}
-span{background-color:white;color:#342757;}
-input{ margin:1em;height:1.5em;font-size:1.1em; border-bottom: .1em inset gray;background-color:white;}
-#output { width:57%;height:23em ;overflow:hidden;overflow-y:scroll;box-shadow:  inset  0em .3em .3em .1em gray;border: .1em inset gray;background-color: #FFF;opacity: 1;padding: 15px;border-radius:5px;}
-
-</style>
+ 	<meta charset='utf-8'>
+    	<meta http-equiv="Content-Language" content="en">
+	<link rel="stylesheet" href="css/608.css"> 
 </head>
 <body> 
-<form>
-<input id="myfile" name="files"  type="file">
-</input>
+	<form>
+		<input id="myfile" name="files"  type="file">
+		</input>
 
-</form>
-<div id="output">
-</div>
+	</form>
+	<div id="output">
+	</div>
 </body>
-<script src=scc.js></script>
-<script src=608.js></script>
+<script src=js/scc.js></script>
+<script src=js/608.js></script>
 <script>
 
 var output=document.getElementById("output")
 var myfile=document.querySelector("#myfile")
 
 var wash= function(str){
-    var pattern=/\0|\u0004/
-    return str.replace(pattern,'')
+    	var pattern=/\0|\u0004/
+    	return str.replace(pattern,'')
 }   
 
-var mksrc= function(evt){
-    output.innerHTML="" 
-    var cues = parseSCC(wash(evt.target.result));
-    var fframes = parse608(cues);
-    output.scrollTop=0
+var fmtOutput = function(){
+    	output.innerHTML="" 
+    	output.scrollTop=0
+}
+var mkSrc= function(evt){
+	fmtOutput()
+    	var cues = parseSCC(wash(evt.target.result))
+    	parse608(cues)
 }
    
-var pullfiles=function(evt){
-    var file = myfile.files[0]
+var pullFiles=function(evt){
+    	var file = myfile.files[0]
         var r=new FileReader()
-        r.onload=mksrc
+        r.onload=mkSrc
         r.readAsText(file)
-
 }
 
-myfile.onchange=pullfiles
+myfile.onchange=pullFiles
 </script>
 
 </html>
