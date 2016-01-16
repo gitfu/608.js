@@ -2,7 +2,10 @@
 
 ## Decode your scc subtitles in a webpage, oh yeah.
 
-This  fork from foolip[https://github.com/foolip/608.js] on github.
+This is a fork from this cat,
+
+https://github.com/foolip/608.js .
+
 
 I added a file reader so I could upload a local scc caption file.
 
@@ -12,5 +15,5 @@ I am also thinking conversion to web_vtt, srt and the like.
 
 yeah.
 
-Here's a link to it running.
+## Here's a link to it running.
  http://stream0.net/gitfu/608.js/
