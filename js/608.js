@@ -48,177 +48,55 @@ function parse608(cues) {
         }
     }
 
-    function toCharCodeSpecial(byte) {
-        switch (byte) {
-        case 0x30: // Registered mark symbol
-            return 0xAE;
-        case 0x31: // Degree sign
-            return 0xB0;
-        case 0x32: // 1/2
-            return 0xBD;
-        case 0x33: // Inverse query
-            return 0xBF;
-        case 0x34: // Trademark symbol
-            return 0x2122;
-        case 0x35: // Cents sign
-            return 0xA2;
-        case 0x36: // Pounds Sterling sign
-            return 0xA3;
-        case 0x37: // Music note
-            return 0x266A;
-        case 0x38: // Lower-case a with grave accent
-            return 0xE0;
-        case 0x39: // Transparent space
-            console.assert(false, 'transparent space not supported');
-            return 0;
-        case 0x3A: // Lower-case e with grave accent
-            return 0xE8;
-        case 0x3B: // Lower-case a with circumflex
-            return 0xE2;
-        case 0x3C: // Lower-case e with circumflex
-            return 0xEA;
-        case 0x3D: // Lower-case i with circumflex
-            return 0xEE;
-        case 0x3E: // Lower-case o with circumflex
-            return 0xF4;
-        case 0x3F: // Lower-case u with circumflex
-            return 0xFB;
-        }
-    }
 
     function toCharCodeExtended(bytes) {
-        switch (bytes) {
-        case 0x1220: // Upper-case a with acute accent
-            return 0xC1;
-        case 0x1221: // Upper-case e with acute accent
-            return 0xC9;
-        case 0x1222: // Upper-case o with acute accent
-            return 0xD3;
-        case 0x1223: // Upper-case u with acute accent
-            return 0xDA;
-        case 0x1224: // Upper-case u with diaeresis
-            return 0xDC;
-        case 0x1225: // Lower-case u with diaeresis
-            return 0xFC;
-        case 0x1226: // Left single quote
-            return 0x2018;
-        case 0x1227: // Inverted exclamation
-            return 0xA1;
-        case 0x1228: // Asterisk
-            return 0x2A;
-        case 0x1229: // Right single quote
-            return 0x2019;
-        case 0x122A: // Em dash
-            return 0x2014;
-        case 0x122B: // Copyright symbol
-            return 0xA9;
-        case 0x122C: // Service mark symbol
-            return 0x2120;
-        case 0x122D: // Middle dot
-            return 0xB7;
-        case 0x122E: // Left double quote
-            return 0x201C;
-        case 0x122F: // Right double quote
-            return 0x201D;
-        case 0x1230: // Upper-case a with grave accent
-            return 0xC0;
-        case 0x1231: // Upper-case a with circumflex
-            return 0xC2;
-        case 0x1232: // Upper-case c with cedilla
-            return 0xC7;
-        case 0x1233: // Upper-case e with grave accent
-            return 0xC8;
-        case 0x1234: // Upper-case e with circumflex
-            return 0xCA;
-        case 0x1235: // Upper-case e with diaeresis
-            return 0xCB;
-        case 0x1236: // Lower-case e with diaeresis
-            return 0xEB;
-        case 0x1237: // Upper-case i with circumflex
-            return 0xCE;
-        case 0x1238: // Upper-case i with diaeresis
-            return 0xCF;
-        case 0x1239: // Lower-case i with diaeresis
-            return 0xEF;
-        case 0x123A: // Upper-case o with circumflex
-            return 0xD4;
-        case 0x123B: // Upper-case u with grave accent
-            return 0xD9;
-        case 0x123C: // Lower-case u with grave accent
-            return 0xF9;
-        case 0x123D: // Upper-case u with circumflex
-            return 0xDB;
-        case 0x123E: // Left double angle quote
-            return 0xAB;
-        case 0x123F: // Right double angle quote
-            return 0xBB;
-        case 0x1320: // Upper-case a with tilde
-            return 0xC3;
-        case 0x1321: // Lower-case a with tilde
-            return 0xE3;
-        case 0x1322: // Upper-case i with acute accent
-            return 0xCD;
-        case 0x1323: // Upper-case i with grave accent
-            return 0xCC;
-        case 0x1324: // Lower-case i with grave accent
-            return 0xEC;
-        case 0x1325: // Upper-case o with grace accent
-            return 0xD2;
-        case 0x1326: // Lower-case o with grace accent
-            return 0xF2;
-        case 0x1327: // Upper-case o with tilde
-            return 0xD5;
-        case 0x1328: // Lower-case o with tilde
-            return 0xF5;
-        case 0x1329: // Left curly brace
-            return 0x7B;
-        case 0x132A: // Right curly brace
-            return 0x7D;
-        case 0x132B: // Backslash
-            return 0x5C;
-        case 0x132C: // Circumflex
-            return 0x5E;
-        case 0x132D: // Underscore
-            return 0x1F;
-        case 0x132E: // Vertical line
-            return 0x7C;
-        case 0x132F: // Tidle
-            return 0x7E;
-        case 0x1330: // Upper-case a with diaeresis
-            return 0xC4;
-        case 0x1331: // Lower-case a with diaeresis
-            return 0xE4;
-        case 0x1332: // Upper-case o with diaeresis
-            return 0xD6;
-        case 0x1333: // Lower-case o with diaeresis
-            return 0xF6;
-        case 0x1334: // Sharp s
-            return 0xDF;
-        case 0x1335: // Yen sign
-            return 0xA5;
-        case 0x1336: // Currency sign
-            return 0xA4;
-        case 0x1337: // Broken bar
-            0xA6;
-        case 0x1338: // Upper-case a with ring
-            return 0xC5;
-        case 0x1339: // Lower-case a with ring
-            return 0xE5;
-        case 0x133A: // Upper-case o with stroke
-            return 0xD8;
-        case 0x133B: // Lower-case o with stroke
-            return 0xF8;
-        case 0x133C: // Box drawings light down and right
-            return 0x250C;
-        case 0x133D: // Box drawings light down and left
-            return 0x2510;
-        case 0x133E: // Box drawings light up and right
-            return 0x2514;
-        case 0x133F: // Box drawings light up and left
-            return 0x2518;
-        }
-    }
+	var extended={
+		0x1220: 0xC1,	0x1221: 0xC9,   0x1222: 0xD3,      
+	    	0x1223:0xDA,	0x1224: 0xDC,	0x1225: 0xFC,
+		0x1226:	0x2018, 0x1227:	0xA1,	0x1228: 0x2A,
+		0x1229: 0x2019, 0x122A: 0x2014, 0x122B: 0xA9,
+		0x122C: 0x2120,	0x122D: 0xB7,	0x122E: 0x201C,
+		0x122F: 0x201D,	0x1230: 0xC0,	0x1231:	0xC2,
+		0x1232: 0xC7,   0x1233: 0xC8,   0x1234: 0xCA,   
+		0x1235: 0xCB,   0x1236: 0xEB,   0x1237: 0xCE,   
+		0x1238: 0xCF,   0x1239: 0xEF,   0x123A: 0xD4,   
+		0x123B: 0xD9,   0x123C: 0xF9,   0x123D: 0xDB,   
+		0x123E: 0xAB,   0x123F: 0xBB,   0x1320: 0xC3,   
+		0x1321: 0xE3,   0x1322: 0xCD,   0x1323: 0xCC,   
+		0x1324: 0xEC,   0x1325: 0xD2,   0x1326: 0xF2, 
+		0x1327: 0xD5,   0x1328: 0xF5,   0x1329: 0x7B,   
+		0x132A: 0x7D,   0x132B: 0x5C,   0x132C: 0x5E,   
+		0x132D: 0x1F,   0x132E: 0x7C,   0x132F: 0x7E,   
+		0x1330: 0xC4,   0x1331: 0xE4,   0x1332: 0xD6,   
+		0x1333: 0xF6,   0x1334: 0xDF,   0x1335: 0xA5,   
+		0x1336: 0xA4,   0x1337: 0xA6,   0x1338: 0xC5,		 
+		0x1339: 0xE5,   0x133A: 0xD8,   0x133B: 0xF8,   
+		0x133C: 0x250C, 0x133D: 0x2510, 0x133E: 0x2514,
+		0x133F: 0x2518      
+		}
 
+	if (extended[bytes]){
+		return extended[bytes]
+		}
+}
+	
+function toCharCodeSpecial(byte) {
+       
+    var  specials ={
+		0x30: 0xAE, 0x31: 0xB0,   0x32: 0xBD,
+		0x33: 0xBF, 0x34: 0x2122, 0x35: 0xA2, 
+		0x36: 0xA3, 0x37: 0x266A, 0x38: 0xE0,
+		0x39: 0x20, 0x3A: 0xE8,	  0x3B: 0xE2,
+		0x3C: 0xEA, 0x3D: 0xEE,	  0x3E: 0xF4,
+		0x3F: 0xFB
+        }
+	
+	if (specials[byte]){
+		return specials[byte]
+		}
+}
+
+			
     function createChannel() {
         var ROWS = 15;
         var COLUMNS = 32;
@@ -423,10 +301,12 @@ function parse608(cues) {
             for (row = 1; row <= ROWS; row++) {
                 for (column = 1; column <= COLUMNS; column++) {
                     charCode = get(row, column); 
+            //console.log(String.fromCharCode.apply(String, [charCode]));
                     charCodes.push(charCode ? charCode : 0x20);
                 }
                 charCodes.push(0x0A);
             }
+            console.log(String.fromCharCode.apply(String, charCodes));
             return String.fromCharCode.apply(String, charCodes);
         }
 
@@ -487,6 +367,7 @@ function parse608(cues) {
 	var out=document.getElementById('output')
         if (cc) {
             var pre = document.createElement('div');
+	    pre.className="fu"
 	    var timespan=document.createElement('span')
 	    timespan.textContent=cue.stamp  
 	    pre.appendChild(timespan)	
