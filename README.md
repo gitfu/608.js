@@ -16,4 +16,4 @@ I am also thinking conversion to web_vtt, srt and the like.
 yeah.
 
 ## Here's a link to it running.
- http://stream0.net/gitfu/608.js/
+ http://stream0.net/scc/
