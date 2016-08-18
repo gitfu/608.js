@@ -22,30 +22,20 @@ function parse608(cues) {
     }
 
     function toCharCode(byte) {
-        switch (byte) {
-        case 0x2A: // Lower-case a with acute accent
-            return 0xE1;
-        case 0x5C: // Lower-case e with acute accent
-            return 0xE9;
-        case 0x5E: // Lower-case i with acute accent
-            return 0xED;
-        case 0x5F: // Lower-case o with acute accent
-            return 0xF3;
-        case 0x60: // Lower-case u with acute accent
-            return 0xFA;
-        case 0x7B: // Lower-case c with cedilla
-            return 0xE7;
-        case 0x7C: // Division sign
-            return 0xF7;
-        case 0x7D: // Upper-case N with tilde
-            return 0xD1;
-        case 0x7E: // Lower-case n with tilde
-            return 0xF1;
-        case 0x7F: // Solid block
-            return 0x2588;
-        default: // the rest match ASCII
-            return byte;
-        }
+         var ccode={ 0x2a :0xE1,
+		0x5c :	0xE9,
+		0x5e :	0xED,
+		0x5f :	0xF3,
+		0x60 :	0xFA,
+		0x7b :	0xE7,
+		0x7c :	0xF7,
+		0x7d :	0xD1,
+		0x7e :	0xF1,
+		0x7f :	0x2588
+         	}
+         if (ccode[byte]){
+		return ccode[byte]
+		}
     }
 
 
